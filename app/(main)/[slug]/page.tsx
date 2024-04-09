@@ -44,16 +44,16 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       title: `Chuyện mình kể ⋅ ${post.data.title}`,
       description: post.content.split('\n')[1],
-      url: `/${params.slug}`,
+      url: `https://chuyenminhke.vercel.app/${params.slug}`,
       siteName: 'Chuyện mình kể',
       images: [
         {
-          url: `https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png`,
+          url: `https://chuyenminhke.vercel.app/_next/image?url=${post.data.cover.replace('/', '%2F')}&w=1000&q=75`,
           width: 800,
           height: 600,
         },
         {
-          url: `https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png`,
+          url: `https://chuyenminhke.vercel.app/_next/image?url=${post.data.cover.replace('/', '%2F')}&w=1920&q=75`,
           width: 1920,
           height: 1440,
           alt: post.data.title,
