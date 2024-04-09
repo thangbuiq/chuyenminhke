@@ -48,12 +48,12 @@ export async function generateMetadata({ params }: Props) {
       siteName: 'Chuyện mình kể',
       images: [
         {
-          url: `https://www.google.com/url?sa=i&url=https%3A%2F%2Fvi.m.wikipedia.org%2Fwiki%2FT%25E1%25BA%25ADp_tin%3APNG_transparency_demonstration_1.png&psig=AOvVaw2zNKw3v36QdLI4nog_V2O8&ust=1712748228705000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLDKyb-CtYUDFQAAAAAdAAAAABAE`,
+          url: `https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png`,
           width: 800,
           height: 600,
         },
         {
-          url: `https://www.google.com/url?sa=i&url=https%3A%2F%2Fvi.m.wikipedia.org%2Fwiki%2FT%25E1%25BA%25ADp_tin%3APNG_transparency_demonstration_1.png&psig=AOvVaw2zNKw3v36QdLI4nog_V2O8&ust=1712748228705000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLDKyb-CtYUDFQAAAAAdAAAAABAE`,
+          url: `https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png`,
           width: 1920,
           height: 1440,
           alt: post.data.title,
