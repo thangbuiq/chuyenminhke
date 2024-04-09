@@ -48,12 +48,12 @@ export async function generateMetadata({ params }: Props) {
       siteName: 'Chuyện mình kể',
       images: [
         {
-          url: `https://chuyenminhke.vercel.app/_next/image?url=${post.data.cover.replace('/', '%2F')}&w=1000&q=75`,
+          url: `https://raw.githubusercontent.com/greyyT/luna-eprocurement-system/main/static/architecture.png`,
           width: 800,
           height: 600,
         },
         {
-          url: `https://chuyenminhke.vercel.app/_next/image?url=${post.data.cover.replace('/', '%2F')}&w=1920&q=75`,
+          url: `https://raw.githubusercontent.com/greyyT/luna-eprocurement-system/main/static/architecture.png`,
           width: 1920,
           height: 1440,
           alt: post.data.title,
