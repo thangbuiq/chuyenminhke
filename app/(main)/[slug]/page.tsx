@@ -2,6 +2,9 @@ import Markdown from 'markdown-to-jsx';
 import { getPostContent, getPostMetadata } from '@/utils/blog';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next';
+import { useMemo } from 'react';
+import { shuffle } from '@/utils/helper';
 
 type Props = {
   params: { slug: string };
@@ -14,10 +17,54 @@ export const generateStaticParams = async () => {
 };
 
 export async function generateMetadata({ params }: Props) {
-  const id = params?.slug ? ' ⋅ ' + params?.slug : '';
-  return {
-    title: `Chuyện mình kể ${id.replaceAll('-', ' ')}`,
+  const post = getPostContent(params.slug);
+
+  const metadata: Metadata = {
+    title: `Chuyện mình kể ⋅ ${post.data.title}`,
+    description: post.content.split('\n')[1],
+    authors: {
+      name: 'Thang Bui Q',
+      url: 'https://thangbuiq.work/',
+    },
+    applicationName: 'Nghe Chuyện Mình Kể',
+    creator: 'Thang Bui Q',
+    generator: 'Next.js',
+    keywords: [
+      'nextjs',
+      'blog',
+      'blogs',
+      'Nghe Chuyện Mình Kể',
+      'Chuyện Mình Kể',
+      'nghechuyenminhke',
+      'chuyenminhke',
+      'story',
+      'mood',
+      'tâm trạng',
+    ],
+    openGraph: {
+      title: `Chuyện mình kể ⋅ ${post.data.title}`,
+      description: post.content.split('\n')[1],
+      url: `${process.env.SITE_URL}/${params.slug}`,
+      siteName: 'Chuyện mình kể',
+      images: [
+        {
+          url: `${process.env.SITE_URL}/_next/image?url=${post.data.cover.replace('/', '%2F')}&w=1000&q=75`,
+          width: 800,
+          height: 600,
+        },
+        {
+          url: `${process.env.SITE_URL}/_next/image?url=${post.data.cover.replace('/', '%2F')}&w=1920&q=75`,
+          width: 1920,
+          height: 1440,
+          alt: post.data.title,
+        },
+      ],
+      locale: 'vi_VN',
+      type: 'website',
+    },
   };
+
+  return metadata;
 }
 
 export default function BlogPage({ params: { slug } }: { params: { slug: string } }) {
@@ -48,6 +95,8 @@ export default function BlogPage({ params: { slug } }: { params: { slug: string 
         </div>
         <Markdown>{post.content}</Markdown>
       </article>
+      <div className="h-[1px] mt-14 bg-slate-500/40 w-full"></div>
+      <div className="h-14"></div>
     </>
   );
 }

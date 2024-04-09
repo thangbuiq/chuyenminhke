@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 export default function Home() {
   const postMetadata = getPostMetadata('blogs');
-  console.log(postMetadata);
 
   return (
     <>

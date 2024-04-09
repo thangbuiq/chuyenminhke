@@ -1,5 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import { dateToDateString, splitDateString } from './helper';
 
 export const getPostMetadata = (basePath: string) => {
   const folder = basePath + '/';
@@ -16,10 +17,7 @@ export const getPostMetadata = (basePath: string) => {
         title: matterResult.data.title,
         is_published: matterResult.data.is_published,
         publish_date: matterResult.data.publish_date,
-        slug: `${toSlug(matterResult.data.title)}-${matterResult.data.publish_date
-          .toISOString()
-          .slice(0, 10)
-          .replace(/-/g, '')}`,
+        slug: `${toSlug(matterResult.data.title)}-${dateToDateString(matterResult.data.publish_date)}`,
       };
     })
     .sort((a, b) => b.publish_date - a.publish_date);
@@ -57,7 +55,7 @@ export const getPostContent = (slug: string) => {
   const folder = 'blogs/';
   const date = slug.split('-').pop() as string;
 
-  const file = folder + `${date.slice(0, 4) + '-' + date.slice(4, 6) + '-' + date.slice(6)}.md`;
+  const file = folder + `${splitDateString(date)}.md`;
 
   const content = fs.readFileSync(file, 'utf-8');
 
