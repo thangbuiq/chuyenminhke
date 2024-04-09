@@ -48,12 +48,18 @@ export async function generateMetadata({ params }: Props) {
       siteName: 'Chuyện mình kể',
       images: [
         {
-          url: `https://raw.githubusercontent.com/greyyT/luna-eprocurement-system/main/static/architecture.png`,
+          url: `https://raw.githubusercontent.com/thangbuiq/chuyenminhke/main/public/${post.data.cover.replace(
+            '/',
+            '',
+          )}`,
           width: 800,
           height: 600,
         },
         {
-          url: `https://raw.githubusercontent.com/greyyT/luna-eprocurement-system/main/static/architecture.png`,
+          url: `https://raw.githubusercontent.com/thangbuiq/chuyenminhke/main/public/${post.data.cover.replace(
+            '/',
+            '',
+          )}`,
           width: 1920,
           height: 1440,
           alt: post.data.title,
