@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+  height: 100%;
+}
+
+article p {
+  color: #555451;
+  line-height: 28px;
+  margin-top: 1.75rem;
+}
+
+article p:first-child {
+  margin-top: 0;
+}
