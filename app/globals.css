@@ -6,14 +6,76 @@ html,
 body,
 :root {
   height: 100%;
+  cursor: none;
+}
+
+article h1 {
+  overflow: hidden;
+  max-width: fit-content;
+  white-space: nowrap;
+  letter-spacing: 0.15em;
+  border-right: 0.15em solid rgb(120, 120, 120);
+  animation:
+    typing 5s steps(40, end),
+    blink-caret 1s steps(40, end) infinite;
 }
 
 article p {
   color: #555451;
-  line-height: 28px;
-  margin-top: 1.75rem;
+  line-height: 1.75;
+  margin-top: 1.5rem;
 }
 
 article p:first-child {
   margin-top: 0;
+}
+
+blockquote {
+  margin: 1rem 0;
+  border-left: 4px solid #767676;
+  color: #5b4444;
+  font-style: italic;
+  font-size: 0.85rem;
+  background-color: #f9f9f9;
+  padding: 1rem 1.5rem;
+  border-radius: 0.25rem;
+}
+
+blockquote p {
+  margin-top: 0.25rem;
+}
+
+.flare {
+  position: fixed;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 100 !important;
+  backdrop-filter: blur(25%) !important;
+  background-color: #e6e6e6;
+  opacity: 0.5;
+  transition:
+    width 0.4s ease-in-out,
+    height 0.4s ease-in-out;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(120, 120, 120);
+  }
 }

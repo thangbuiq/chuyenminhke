@@ -1,16 +1,16 @@
-import fs from 'fs';
-import matter from 'gray-matter';
-import { dateToDateString, splitDateString } from './helper';
+import fs from "fs";
+import matter from "gray-matter";
+import { dateToDateString, splitDateString } from "./helper";
 
 export const getPostMetadata = (basePath: string) => {
-  const folder = basePath + '/';
+  const folder = basePath + "/";
   const files = fs.readdirSync(folder);
-  const markdownPosts = files.filter((file) => file.endsWith('.md'));
+  const markdownPosts = files.filter((file) => file.endsWith(".md"));
 
   // get the file data
   const posts = markdownPosts
     .map((filename) => {
-      const fileContents = fs.readFileSync(`${basePath}/${filename}`, 'utf8');
+      const fileContents = fs.readFileSync(`${basePath}/${filename}`, "utf8");
       const matterResult = matter(fileContents);
 
       return {
@@ -30,34 +30,34 @@ export const toSlug = (str: string): string => {
 
   // Remove accents
   str = str
-    .normalize('NFD') // convert string to unicode character combinations
-    .replace(/[\u0300-\u036f]/g, ''); // remove accent characters after decomposition
+    .normalize("NFD") // convert string to unicode character combinations
+    .replace(/[\u0300-\u036f]/g, ""); // remove accent characters after decomposition
 
   // Replace đĐ characters
-  str = str.replace(/[đĐ]/g, 'd');
+  str = str.replace(/[đĐ]/g, "d");
 
   // Remove special characters
-  str = str.replace(/([^0-9a-z-\s])/g, '');
+  str = str.replace(/([^0-9a-z-\s])/g, "");
 
   // Replace spaces with -
-  str = str.replace(/(\s+)/g, '-');
+  str = str.replace(/(\s+)/g, "-");
 
   // Remove consecutive dashes
-  str = str.replace(/-+/g, '-');
+  str = str.replace(/-+/g, "-");
 
   // Remove dashes at the beginning and end
-  str = str.replace(/^-+|-+$/g, '');
+  str = str.replace(/^-+|-+$/g, "");
 
   return str;
 };
 
 export const getPostContent = (slug: string) => {
-  const folder = 'blogs/';
-  const date = slug.split('-').pop() as string;
+  const folder = "blogs/";
+  const date = slug.split("-").pop() as string;
 
   const file = folder + `${splitDateString(date)}.md`;
 
-  const content = fs.readFileSync(file, 'utf-8');
+  const content = fs.readFileSync(file, "utf-8");
 
   const matterResult = matter(content);
 
