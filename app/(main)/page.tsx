@@ -11,12 +11,16 @@ export default function Home() {
         <Link href={"/"}>
           <Image
             src="/icon.png"
+            id="frontpage-icon"
             alt="chuyeminhke icon"
             width={140}
             height={140}
           />
         </Link>
-        <h1 className="font-bold text-5xl text-[#1d1d1d] mt-14">
+        <h1
+          className="font-bold text-5xl text-[#1d1d1d] mt-14 py-2 pr-4"
+          id="frontpage-title"
+        >
           chuyện mình kể
         </h1>
       </header>

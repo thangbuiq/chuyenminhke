@@ -86,6 +86,7 @@ export default function BlogPage({
         <Link href={"/"}>
           <Image
             src={"/icon.png"}
+            id="frontpage-icon"
             alt="chuyeminhke icon"
             width={70}
             height={70}
