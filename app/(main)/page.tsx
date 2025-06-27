@@ -11,7 +11,7 @@ export default function Home() {
         <Link href={"/"}>
           <Image
             src="/icon.png"
-            alt="Nghe Chuyen Minh Ke Icon"
+            alt="chuyeminhke icon"
             width={140}
             height={140}
           />

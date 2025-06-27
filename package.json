@@ -9,7 +9,9 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prisma": "npx prisma migrate dev --name add_likes"
+    "prisma": "bunx prisma migrate dev",
+    "postinstall": "bunx prisma generate",
+    "vercel-build": "bunx prisma generate && bunx prisma migrate deploy && next build"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",

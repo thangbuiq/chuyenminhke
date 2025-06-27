@@ -1,11 +1,10 @@
 import Markdown from "markdown-to-jsx";
-import { getPostContent, getPostMetadata } from "@/utils/blog";
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next";
-import { useMemo } from "react";
-import { shuffle } from "@/utils/helper";
 import LikeButton from "@/components/ui/LikeButton";
+
+import { getPostContent, getPostMetadata } from "@/utils/blog";
+import { Metadata } from "next";
 
 type Props = {
   params: { slug: string };
@@ -21,21 +20,21 @@ export async function generateMetadata({ params }: Props) {
   const post = getPostContent(params.slug);
 
   const metadata: Metadata = {
-    title: `Chuyện mình kể ⋅ ${post.data.title}`,
+    title: `chuyện mình kể ⋅ ${post.data.title}`,
     description: post.content.split("\n")[1],
     authors: {
       name: "Thang Bui Q",
       url: "https://thangbuiq.work/",
     },
-    applicationName: "Nghe Chuyện Mình Kể",
+    applicationName: "chuyện Mình Kể",
     creator: "Thang Bui Q",
     generator: "Next.js",
     keywords: [
       "nextjs",
       "blog",
       "blogs",
-      "Nghe Chuyện Mình Kể",
       "Chuyện Mình Kể",
+      "chuyện mình kể",
       "nghechuyenminhke",
       "chuyenminhke",
       "story",
@@ -43,10 +42,10 @@ export async function generateMetadata({ params }: Props) {
       "tâm trạng",
     ],
     openGraph: {
-      title: `Chuyện mình kể ⋅ ${post.data.title}`,
+      title: `chuyện mình kể ⋅ ${post.data.title}`,
       description: post.content.split("\n")[1],
       url: `https://chuyenminhke.vercel.app/${params.slug}`,
-      siteName: "Chuyện mình kể",
+      siteName: "chuyện mình kể",
       images: [
         {
           url: `https://raw.githubusercontent.com/thangbuiq/chuyenminhke/main/public/${post.data.cover.replace(
@@ -87,7 +86,7 @@ export default function BlogPage({
         <Link href={"/"}>
           <Image
             src={"/icon.png"}
-            alt="Chuyen Minh Ke Icon"
+            alt="chuyeminhke icon"
             width={70}
             height={70}
           />
