@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
-import FlareCursor from "@/components/ui/FlareCursor";
 
 import "./globals.css";
 
@@ -18,10 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={playfair.className}>
-        <FlareCursor />
-        {children}
-      </body>
+      <body className={playfair.className}>{children}</body>
     </html>
   );
 }

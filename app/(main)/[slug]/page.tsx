@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { useMemo } from "react";
 import { shuffle } from "@/utils/helper";
+import LikeButton from "@/components/ui/LikeButton";
 
 type Props = {
   params: { slug: string };
@@ -114,7 +115,9 @@ export default function BlogPage({
         </div>
         <Markdown>{post.content}</Markdown>
       </article>
-      <div className="h-[1px] mt-14 bg-slate-500/40 w-full"></div>
+
+      <div className="h-[1px] mt-14 mb-4 bg-slate-500/40 w-full"></div>
+      <LikeButton slug={slug} />
       <div className="h-14"></div>
     </>
   );

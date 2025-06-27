@@ -25,11 +25,11 @@ export default function Home() {
           <div key={post.slug} className="flex justify-between items-center">
             <Link
               href={`/${post.slug}`}
-              className="text-xl text-[#1d1d1d] hover:underline hover:text-[#555451] hover:decoration-[#555451] underline-offset-3"
+              className="text-xl text-[#1d1d1d] hover:underline hover:text-[#555451] hover:decoration-[#555451] underline-offset-3 truncate flex-1 mr-4"
             >
               {post.title}
             </Link>
-            <p className="text-[#787670]">
+            <p className="text-[#787670] flex-shrink-0">
               {post.publish_date.toLocaleString("default", {
                 month: "short",
                 day: "numeric",
