@@ -16,8 +16,13 @@ export const generateStaticParams = async () => {
   return posts.map((post) => ({ slug: post.slug }));
 };
 
-export async function generateMetadata({ params }: Props) {
-  const post = getPostContent(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getPostContent(slug);
 
   const metadata: Metadata = {
     title: `chuyện mình kể ⋅ ${post.data.title}`,
@@ -44,7 +49,7 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       title: `chuyện mình kể ⋅ ${post.data.title}`,
       description: post.content.split("\n")[1],
-      url: `https://chuyenminhke.vercel.app/${params.slug}`,
+      url: `https://chuyenminhke.vercel.app/${slug}`,
       siteName: "chuyện mình kể",
       images: [
         {
@@ -73,11 +78,12 @@ export async function generateMetadata({ params }: Props) {
   return metadata;
 }
 
-export default function BlogPage({
-  params: { slug },
+export default async function BlogPage({
+  params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const post = getPostContent(slug);
 
   return (
