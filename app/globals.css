@@ -8,6 +8,17 @@ body,
   height: 100%;
 }
 
+::selection {
+  background-color: #3d3d3d; /* Tailwind sky-500 */
+  color: white;
+}
+
+::-moz-selection {
+  background-color: rgba(224, 34, 0, 0.3);
+  backdrop-filter: blur(2px);
+  color: inherit;
+}
+
 article h1 {
   letter-spacing: 0.15em;
 }

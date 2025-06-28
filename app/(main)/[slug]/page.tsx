@@ -1,10 +1,11 @@
 import Markdown from "markdown-to-jsx";
 import Image from "next/image";
 import Link from "next/link";
-import LikeButton from "@/components/ui/LikeButton";
+import LikeButton from "@/components/common/likebutton";
 
 import { getPostContent, getPostMetadata } from "@/utils/blog";
 import { Metadata } from "next";
+import Footer from "@/components/common/footer";
 
 type Props = {
   params: { slug: string };
@@ -122,8 +123,12 @@ export default async function BlogPage({
         <Markdown>{post.content}</Markdown>
       </article>
 
-      <div className="h-[1px] mt-14 mb-4 bg-slate-500/40 w-full"></div>
+      <div className="mt-10 mb-4 border-t border-[#e5e5e5] w-full"></div>
       <LikeButton slug={slug} />
+      <p className="mt-4 text-sm text-[#999792]">
+        chúc bạn đọc một ngày nhiều may mắn và bình yên 🌱
+      </p>
+      <Footer />
       <div className="h-14"></div>
     </>
   );

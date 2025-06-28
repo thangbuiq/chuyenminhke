@@ -13,6 +13,14 @@ export const getPostMetadata = (basePath: string) => {
       const fileContents = fs.readFileSync(`${basePath}/${filename}`, "utf8");
       const matterResult = matter(fileContents);
 
+      if (matterResult.data.publish_date) {
+        matterResult.data.publish_date = new Date(
+          matterResult.data.publish_date,
+        );
+      } else {
+        matterResult.data.publish_date = new Date(0);
+      }
+
       return {
         title: matterResult.data.title,
         is_published: matterResult.data.is_published,

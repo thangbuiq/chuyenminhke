@@ -1,6 +1,7 @@
 import { getPostMetadata } from "@/utils/blog";
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "@/components/common/footer";
 
 export default function Home() {
   const postMetadata = getPostMetadata("blogs");
@@ -23,6 +24,11 @@ export default function Home() {
         >
           chuyện mình kể
         </h1>
+        <p className="text-[#787670] mt-4 leading-relaxed">
+          mỗi buổi sáng, mình kể lại những mảnh nhỏ của ngày hôm qua, <br />
+          chuyện con mèo đang ngáp, chuyện cà phê chưa kịp nguội, <br />
+          chuyện mình còn giữ trong tim, chuyện mình học làm người.
+        </p>
       </header>
       <main className="mt-14 flex flex-col gap-7">
         {postMetadata.map((post) => (
@@ -41,6 +47,8 @@ export default function Home() {
             </p>
           </div>
         ))}
+        <div className="mb-4"></div>
+        <Footer />
       </main>
     </>
   );
