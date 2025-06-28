@@ -24,7 +24,10 @@ export default function Home() {
         >
           chuyện mình kể
         </h1>
-        <p className="text-[#787670] mt-4 leading-relaxed">
+        <p
+          className="text-[#787670] mt-4 leading-relaxed"
+          id="frontpage-description"
+        >
           mỗi buổi sáng, mình kể lại những mảnh nhỏ của ngày hôm qua, <br />
           chuyện con mèo đang ngáp, chuyện cà phê chưa kịp nguội, <br />
           chuyện mình còn giữ trong tim, chuyện mình học làm người.
@@ -34,12 +37,16 @@ export default function Home() {
         {postMetadata.map((post) => (
           <div key={post.slug} className="flex justify-between items-center">
             <Link
+              id="frontpage-post-title"
               href={`/${post.slug}`}
               className="text-xl text-[#1d1d1d] hover:underline hover:text-[#555451] hover:decoration-[#555451] underline-offset-3 truncate flex-1 mr-4"
             >
               {post.title}
             </Link>
-            <p className="text-[#787670] flex-shrink-0">
+            <p
+              id="frontpage-post-title"
+              className="text-[#787670] flex-shrink-0"
+            >
               {post.publish_date.toLocaleString("default", {
                 month: "short",
                 day: "numeric",

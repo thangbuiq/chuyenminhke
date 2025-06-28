@@ -92,6 +92,16 @@ blockquote p {
     letter-spacing: 0.05em;
   }
 
+  #frontpage-post-title {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  #frontpage-description {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
   #frontpage-icon {
     width: 50px;
     height: 50px;
