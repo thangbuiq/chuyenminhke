@@ -11,7 +11,7 @@ export default function LikeButton({ slug }: { slug: string }) {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/${slug}`)
+    fetch(`/api/${slug}/likes`)
       .then((res) => res.json())
       .then((data) => setCount(data.count));
   }, [slug]);
@@ -21,7 +21,7 @@ export default function LikeButton({ slug }: { slug: string }) {
 
     setIsAnimating(true);
 
-    const res = await fetch(`/api/${slug}`, { method: "POST" });
+    const res = await fetch(`/api/${slug}/likes`, { method: "POST" });
     const data = await res.json();
     setCount(data.count);
     setLiked(true);

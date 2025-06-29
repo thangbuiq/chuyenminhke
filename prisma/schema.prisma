@@ -13,3 +13,11 @@ model Like {
   slug  String @unique
   count Int    @default(0)
 }
+
+model Comment {
+  id        String   @id @default(cuid())
+  slug      String
+  author    String
+  content   String
+  timestamp DateTime @default(now())
+}
