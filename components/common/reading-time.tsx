@@ -30,7 +30,7 @@ export default function ReadingTime({
   return (
     <div className="flex items-center gap-1 text-sm text-[#787670]">
       <Clock size={14} />
-      <span>{readingTime} phút của bạn đọc </span>
+      <span>{readingTime} phút để đọc</span>
     </div>
   );
 }

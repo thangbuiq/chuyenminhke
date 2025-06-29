@@ -16,6 +16,7 @@ export default function Home() {
             alt="chuyeminhke icon"
             width={140}
             height={140}
+            className="hover:scale-105 hover:drop-shadow-lg transition-all duration-500"
           />
         </Link>
         <h1
@@ -47,6 +48,9 @@ export default function Home() {
               id="frontpage-post-title"
               className="text-[#787670] flex-shrink-0"
             >
+              {post.publish_date
+                .toLocaleString("default", { year: "2-digit" })
+                .replace(/^(\d{2})$/, "$1, ")}
               {post.publish_date.toLocaleString("default", {
                 month: "short",
                 day: "numeric",

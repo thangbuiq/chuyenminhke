@@ -35,16 +35,16 @@ export default function RelatedPosts({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
           <Link key={post.slug} href={`/${post.slug}`}>
-            <Card className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
+            <Card className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-500 bg-white/80 backdrop-blur-sm">
               <div className="relative overflow-hidden">
                 <Image
                   src={post.cover}
                   alt={post.cover_alt || post.title}
                   width={400}
                   height={240}
-                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               <CardContent className="p-6">

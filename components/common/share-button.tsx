@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Share2, Facebook, Twitter, Link, MessageCircle } from "lucide-react";
+import { Share2, Facebook, Instagram, Link } from "lucide-react"; // @ts-ignore
 import { toast } from "sonner";
 
 interface ShareButtonProps {
@@ -32,24 +32,18 @@ export default function ShareButton({ url, title }: ShareButtonProps) {
       },
     },
     {
-      name: "Twitter",
-      icon: Twitter,
+      name: "Instagram",
+      icon: Instagram,
       action: () => {
-        window.open(
-          `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
-          "_blank",
-          "width=600,height=400",
-        );
-      },
-    },
-    {
-      name: "Telegram",
-      icon: MessageCircle,
-      action: () => {
-        window.open(
-          `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
-          "_blank",
-        );
+        navigator.clipboard.writeText(url).then(() => {
+          window.open(
+            "https://www.instagram.com/?url=" + encodeURIComponent(url),
+            "_blank",
+          );
+          toast.info(
+            "Liên kết đã được sao chép! Dán vào Instagram để chia sẻ 📷",
+          );
+        });
       },
     },
     {

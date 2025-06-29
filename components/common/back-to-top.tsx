@@ -37,7 +37,7 @@ export default function BackToTop() {
         fixed bottom-8 right-8 z-40 
         w-12 h-12 rounded-full shadow-lg
         bg-black/75 hover:bg-black/65
-        text-white transition-all duration-300
+        text-white transition-all duration-500
         hover:scale-105 hover:shadow-xl
       `}
       aria-label="Quay lên đầu trang"

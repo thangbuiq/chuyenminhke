@@ -25,9 +25,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostContent(slug);
 
+  // Utility function to remove special characters
+  const removeSpecialChars = (str: string) =>
+    str.replace(/[^\p{L}\p{N}\s.,!?-]/gu, "");
+
+  const cleanTitle = removeSpecialChars(post.data.title);
+  const cleanDescription = removeSpecialChars(
+    post.content.split("\n")[1] || "",
+  );
+
   const metadata: Metadata = {
-    title: `chuyện mình kể ⋅ ${post.data.title}`,
-    description: post.content.split("\n")[1],
+    title: `chuyện mình kể ⋅ ${cleanTitle}`,
+    description: cleanDescription,
     authors: {
       name: "Thang Bui Q",
       url: "https://thangbuiq.work/",
@@ -48,8 +57,8 @@ export async function generateMetadata({
       "tâm trạng",
     ],
     openGraph: {
-      title: `chuyện mình kể ⋅ ${post.data.title}`,
-      description: post.content.split("\n")[1],
+      title: `chuyện mình kể ⋅ ${cleanTitle}`,
+      description: cleanDescription,
       url: `https://chuyenminhke.vercel.app/${slug}`,
       siteName: "chuyện mình kể",
       images: [
@@ -68,7 +77,7 @@ export async function generateMetadata({
           )}`,
           width: 1920,
           height: 1440,
-          alt: post.data.title,
+          alt: cleanTitle,
         },
       ],
       locale: "vi_VN",
@@ -97,7 +106,7 @@ export default async function BlogPage({
         <div className="absolute inset-0 bg-gradient-to-b from-amber-50/30 to-transparent pointer-events-none" />
         <Link
           href={"/"}
-          className="inline-block transition-all duration-300 hover:scale-105 hover:drop-shadow-lg"
+          className="inline-block transition-all duration-500 hover:scale-105 hover:drop-shadow-lg"
         >
           <Image
             src={"/icon.png"}
@@ -138,7 +147,7 @@ export default async function BlogPage({
 
         {/* Enhanced cover image with overlay effects */}
         <div className="py-14 relative group">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-300 rounded-lg" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-500 rounded-lg" />
           <Image
             src={post.data.cover}
             alt={post.data.cover_alt}
@@ -146,7 +155,7 @@ export default async function BlogPage({
             width={0}
             height={0}
             sizes="100vw"
-            className="w-full h-auto shadow-lg transition-transform duration-300 group-hover:scale-[1.015]"
+            className="w-full h-auto shadow-lg transition-transform duration-500 group-hover:scale-[1.015]"
           />
         </div>
 
