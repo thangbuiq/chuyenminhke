@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="pt-40">
+      <header className="pt-40 px-4 sm:px-0">
         <Link href={"/"}>
           <Image
             src="/icon.png"
@@ -20,13 +20,13 @@ export default function Home() {
           />
         </Link>
         <h1
-          className="font-bold text-5xl text-[#1d1d1d] mt-14 py-2 pr-4"
+          className="font-bold text-5xl text-[#1d1d1d] mt-14 mb-8 py-2 pr-4"
           id="frontpage-title"
         >
           chuyện mình kể
         </h1>
         <p
-          className="text-[#787670] mt-4 leading-relaxed"
+          className="text-[#787670] leading-relaxed mt-8 text-xs sm:text-sm sm:leading-relaxed"
           id="frontpage-description"
         >
           mỗi buổi sáng, mình kể lại những mảnh nhỏ của ngày hôm qua, <br />
@@ -34,19 +34,26 @@ export default function Home() {
           chuyện mình còn giữ trong tim, chuyện mình học làm người.
         </p>
       </header>
-      <main className="mt-14 flex flex-col gap-7">
+      <main className="mt-10 sm:mt-14 px-4 sm:px-0 flex flex-col gap-6">
+        <h2 className="text-lg sm:text-xl text-[#1d1d1d] font-bold mb-4">
+          các bài mà mình đã viết
+        </h2>
+
         {postMetadata.map((post) => (
-          <div key={post.slug} className="flex justify-between items-center">
+          <div
+            key={post.slug}
+            className="flex flex-col sm:flex-row sm:justify-between sm:items-center"
+          >
             <Link
               id="frontpage-post-title"
               href={`/${post.slug}`}
-              className="text-xl text-[#1d1d1d] hover:underline hover:text-[#555451] hover:decoration-[#555451] underline-offset-3 truncate flex-1 mr-4"
+              className="text-lg text-[#1d1d1d] font-light hover:underline hover:text-[#555451] hover:decoration-[#555451] underline-offset-4 leading-relaxed"
             >
               {post.title}
             </Link>
             <p
               id="frontpage-post-title"
-              className="text-[#787670] flex-shrink-0"
+              className="text-[#787670] mt-1 sm:mt-0 text-sm sm:text-base"
             >
               {post.publish_date
                 .toLocaleString("default", { year: "2-digit" })

@@ -98,11 +98,12 @@ export default async function BlogPage({
 
   return (
     <>
-      {/* Reading Progress Bar */}
-      <ReadingProgress />
+      <div className="hidden md:block">
+        <ReadingProgress />
+      </div>
 
       {/* Emotional Header with gentle animations */}
-      <header className="pt-32 relative">
+      <header className="pt-40  px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-amber-50/30 to-transparent pointer-events-none" />
         <Link
           href={"/"}
@@ -118,7 +119,7 @@ export default async function BlogPage({
         </Link>
 
         {/* Breadcrumb with heart */}
-        <nav className="mt-4 text-sm text-[#999792]">
+        <nav className="mt-4 ml-2 text-sm text-[#999792]">
           <Link href="/" className="hover:text-[#787670] transition-colors">
             home
           </Link>
