@@ -29,15 +29,18 @@ export default function Home() {
           className="text-[#787670] leading-relaxed mt-8 text-xs sm:text-sm sm:leading-relaxed"
           id="frontpage-description"
         >
-          mỗi buổi sáng, mình kể lại những mảnh nhỏ của ngày hôm qua, <br />
+          mình kể lại những mảnh nhỏ của ngày hôm qua, <br />
           chuyện con mèo đang ngáp, chuyện cà phê chưa kịp nguội, <br />
           chuyện mình còn giữ trong tim, chuyện mình học làm người.
         </p>
       </header>
       <main className="mt-10 sm:mt-14 px-4 sm:px-0 flex flex-col gap-6">
-        <h2 className="text-lg sm:text-xl text-[#1d1d1d] font-bold mb-4">
-          các bài mà mình đã viết
-        </h2>
+        <div className="flex items-center mb-4">
+          <span className="w-2 h-2 rounded-full bg-[#252525] mr-3 inline-block animate-pulse" />
+          <h2 className="text-lg sm:text-xl text-[#1d1d1d] font-bold">
+            nên mình đã viết...
+          </h2>
+        </div>
 
         {postMetadata.map((post) => (
           <div

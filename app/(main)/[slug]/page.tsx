@@ -25,7 +25,6 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostContent(slug);
 
-  // Utility function to remove special characters
   const removeSpecialChars = (str: string) =>
     str.replace(/[^\p{L}\p{N}\s.,!?-]/gu, "");
 
@@ -33,6 +32,8 @@ export async function generateMetadata({
   const cleanDescription = removeSpecialChars(
     post.content.split("\n")[1] || "",
   );
+
+  const ogImageUrl = `https://chuyenminhke.vercel.app/og-images/${slug}.png`;
 
   const metadata: Metadata = {
     title: `chuyện mình kể ⋅ ${cleanTitle}`,
@@ -63,25 +64,20 @@ export async function generateMetadata({
       siteName: "chuyện mình kể",
       images: [
         {
-          url: `https://raw.githubusercontent.com/thangbuiq/chuyenminhke/main/public/${post.data.cover.replace(
-            "/",
-            "",
-          )}`,
-          width: 800,
-          height: 600,
-        },
-        {
-          url: `https://raw.githubusercontent.com/thangbuiq/chuyenminhke/main/public/${post.data.cover.replace(
-            "/",
-            "",
-          )}`,
-          width: 1920,
-          height: 1440,
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
           alt: cleanTitle,
         },
       ],
       locale: "vi_VN",
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `chuyện mình kể ⋅ ${cleanTitle}`,
+      description: cleanDescription,
+      images: [ogImageUrl],
     },
   };
 
@@ -103,7 +99,7 @@ export default async function BlogPage({
       </div>
 
       {/* Emotional Header with gentle animations */}
-      <header className="pt-40  px-4 relative">
+      <header className="pt-40 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-amber-50/30 to-transparent pointer-events-none" />
         <Link
           href={"/"}
