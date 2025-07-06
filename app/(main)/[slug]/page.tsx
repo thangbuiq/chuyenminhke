@@ -1,6 +1,7 @@
 import Markdown from "markdown-to-jsx";
 import Image from "next/image";
 import Link from "next/link";
+import { CalendarDays } from "lucide-react";
 import LikeButton from "@/components/common/like-button";
 import ReadingProgress from "@/components/common/reading-progress";
 import ShareButton from "@/components/common/share-button";
@@ -33,7 +34,8 @@ export async function generateMetadata({
     post.content.split("\n")[1] || "",
   );
 
-  const ogImageUrl = `https://chuyenminhke.vercel.app/og-images/${slug}.png`;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const ogImageUrl = `${baseUrl}/og-images/${slug}.png`;
 
   const metadata: Metadata = {
     title: `chuyện mình kể ⋅ ${cleanTitle}`,
@@ -60,7 +62,7 @@ export async function generateMetadata({
     openGraph: {
       title: `chuyện mình kể ⋅ ${cleanTitle}`,
       description: cleanDescription,
-      url: `https://chuyenminhke.vercel.app/${slug}`,
+      url: `${baseUrl}/${slug}`,
       siteName: "chuyện mình kể",
       images: [
         {
@@ -91,6 +93,7 @@ export default async function BlogPage({
 }) {
   const { slug } = await params;
   const post = getPostContent(slug);
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
   return (
     <>
@@ -129,7 +132,7 @@ export default async function BlogPage({
         {/* Enhanced metadata with icons */}
         <div className="flex flex-wrap items-center gap-4 text-sm text-[#787670] mb-2">
           <div className="flex items-center gap-1">
-            <span>📅</span>
+            <CalendarDays className="w-4 h-4" />
             <time dateTime={post.data.publish_date.toISOString()}>
               {post.data.publish_date.toLocaleString("vi-VN", {
                 weekday: "long",
@@ -188,10 +191,7 @@ export default async function BlogPage({
           </p>
           <div className="flex justify-center items-center gap-4">
             <LikeButton slug={slug} />
-            <ShareButton
-              url={`https://chuyenminhke.vercel.app/${slug}`}
-              title={post.data.title}
-            />
+            <ShareButton url={`${baseUrl}/${slug}`} title={post.data.title} />
           </div>
         </div>
       </div>

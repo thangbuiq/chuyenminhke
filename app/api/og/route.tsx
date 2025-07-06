@@ -7,8 +7,8 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const title = searchParams.get("title") || "chuyện mình kể";
-    const cover =
-      searchParams.get("cover") || "https://chuyenminhke.vercel.app/icon.png";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const cover = searchParams.get("cover") || `${baseUrl}/icon.png`;
     const layout = searchParams.get("layout") || "left"; // 'left' or 'right'
 
     // Load local Playfair Display fonts
