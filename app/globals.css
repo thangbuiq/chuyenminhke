@@ -87,18 +87,12 @@ blockquote p {
     animation: none !important;
   }
 
-  #frontpage-title {
-    font-size: 1.5rem;
-    letter-spacing: 0.05em;
-  }
-
   #frontpage-post-title {
     font-size: 1rem;
     margin-top: 0.5rem;
   }
 
   #frontpage-description {
-    font-size: 0.75rem;
     margin-top: 0.5rem;
   }
 

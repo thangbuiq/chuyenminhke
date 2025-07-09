@@ -19,11 +19,11 @@ export default function Home() {
             className="hover:scale-105 hover:drop-shadow-lg transition-all duration-500"
           />
         </Link>
-        <h1 className="font-bold text-5xl text-[#1d1d1d] mt-14 mb-8 py-2 pr-4">
+        <h1 className="font-bold text-2xl sm:text-5xl text-[#1d1d1d] mt-14 mb-8 py-2 pr-4">
           chuyện mình kể
         </h1>
         <p
-          className="text-[#787670] leading-relaxed mt-8 text-xs sm:text-sm sm:leading-relaxed"
+          className="text-[#787670] leading-relaxed mt-8 text-[0.715rem] sm:text-sm sm:leading-relaxed border-l-4 border-[#787670] pl-3 sm:pl-6"
           id="frontpage-description"
         >
           mình kể lại những mảnh nhỏ của ngày hôm qua, <br />
@@ -34,10 +34,10 @@ export default function Home() {
       <main className="mt-10 sm:mt-14 px-4 sm:px-0 flex flex-col gap-6">
         <div className="flex items-center mb-4">
           <h2
-            className="text-lg sm:text-xl text-[#1d1d1d] font-bold tracking-widest"
+            className="text-lg sm:text-xl text-[#1d1d1d] font-semibold"
             id="frontpage-title"
           >
-            nên mình đã viết...
+            <span className="mr-2">🌱</span>vậy nên mình viết...
           </h2>
         </div>
 
