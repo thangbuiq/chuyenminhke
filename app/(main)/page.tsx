@@ -2,14 +2,14 @@ import { getPostMetadata } from "@/utils/blog";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/common/footer";
-import { ArrowRight } from "lucide-react";
+import PostPagination from "@/components/common/post-pagination";
 
 export default function Home() {
   const postMetadata = getPostMetadata("blogs");
 
   return (
     <>
-      <header className="pt-40 px-4 sm:px-0">
+      <header className="pt-36 px-2 sm:px-0">
         <Link href={"/"}>
           <Image
             src="/icon.png"
@@ -27,7 +27,7 @@ export default function Home() {
           className="text-[#787670] leading-relaxed mt-8 text-[0.715rem] sm:text-sm sm:leading-relaxed border-l-4 border-[#787670] pl-3 sm:pl-6"
           id="frontpage-description"
         >
-          mình kể lại những mảnh nhỏ của ngày hôm qua, <br />
+          mình kể lại những cái nhỏ của ngày hôm qua, <br />
           chuyện con mèo đang ngáp, chuyện cà phê chưa kịp nguội, <br />
           chuyện mình còn giữ trong tim, chuyện mình học làm người.
         </p>
@@ -42,35 +42,7 @@ export default function Home() {
           </h2>
         </div>
 
-        {postMetadata.map((post) => (
-          <div
-            key={post.slug}
-            className="flex flex-col sm:flex-row sm:justify-between sm:items-center"
-          >
-            <Link
-              id="frontpage-post-title"
-              href={`/${post.slug}`}
-              // lightning and modern highlight on hover
-              className="text-lg text-[#1d1d1d] font-light hover:underline hover:text-[#555451] hover:decoration-[#555451] underline-offset-4 leading-relaxed hover:scale-105 transition-all duration-500"
-            >
-              <span className="flex items-center gap-2">
-                {post.title}
-                <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
-            <p
-              id="frontpage-post-title"
-              className="text-[#787670] mt-1 sm:mt-0 text-sm sm:text-base"
-            >
-              {post.publish_date.toLocaleString("vi-VN", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
-          </div>
-        ))}
-        <div className="mb-4"></div>
+        <PostPagination posts={postMetadata} perPage={3} />
         <Footer />
       </main>
     </>

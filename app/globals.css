@@ -29,7 +29,7 @@ article h1,
   white-space: nowrap;
   border-right: 0.05em solid rgb(120, 120, 120);
   animation:
-    typing 4.5s steps(40, end),
+    typing 5.5s steps(40, end),
     blink-caret 1s steps(40, end) infinite;
 }
 
@@ -58,7 +58,6 @@ blockquote p {
   margin-top: 0.25rem;
 }
 
-/* The typing effect */
 @keyframes typing {
   from {
     width: 0;

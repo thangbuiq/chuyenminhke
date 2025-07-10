@@ -1,8 +1,6 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
-export const runtime = "edge";
-
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -11,7 +9,6 @@ export async function GET(request: NextRequest) {
     const cover = searchParams.get("cover") || `${baseUrl}/icon.png`;
     const layout = searchParams.get("layout") || "left"; // 'left' or 'right'
 
-    // Load local Playfair Display fonts
     const playfairRegular = fetch(
       new URL("/static/PlayfairDisplay-Regular.ttf", request.url),
     ).then((res) => res.arrayBuffer());
@@ -25,7 +22,6 @@ export async function GET(request: NextRequest) {
       playfairSemiBold,
     ]);
 
-    // Clean title and ensure it fits
     const cleanTitle = title.replace(/[^\p{L}\p{N}\s.,!?-]/gu, "");
     const displayTitle =
       cleanTitle.length > 60 ? cleanTitle.substring(0, 57) + "..." : cleanTitle;
