@@ -43,6 +43,7 @@ export async function GET(request: NextRequest) {
             background: "white",
             fontFamily: "Playfair Display",
             position: "relative",
+            padding: "80px 60px",
           }}
         >
           <div
@@ -64,7 +65,7 @@ export async function GET(request: NextRequest) {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              padding: "60px 40px",
+              padding: "40px 20px",
               position: "relative",
               zIndex: 2,
             }}
@@ -73,8 +74,8 @@ export async function GET(request: NextRequest) {
             <div
               style={{
                 position: "absolute",
-                top: "40px",
-                left: "40px",
+                top: "20px",
+                left: "20px",
                 display: "flex",
                 alignItems: "center",
                 gap: "4px",

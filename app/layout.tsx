@@ -7,7 +7,18 @@ const playfair = Playfair_Display({ subsets: ["vietnamese"] });
 
 export const metadata: Metadata = {
   title: "chuyện mình kể",
-  description: "chuyện mình kể, còn mình là ai thì không quan trọng",
+  description:
+    "mình kể lại những mảnh nhỏ của ngày hôm qua, chuyện con mèo đang ngáp, chuyện cà phê chưa kịp nguội, chuyện mình còn giữ trong tim, chuyện mình học làm người.",
+  openGraph: {
+    images: [
+      {
+        url: "/og-images/_main.png",
+        width: 1200,
+        height: 630,
+        alt: "chuyện mình kể",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
