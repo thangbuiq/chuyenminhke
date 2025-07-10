@@ -2,6 +2,7 @@ import { getPostMetadata } from "@/utils/blog";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/common/footer";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   const postMetadata = getPostMetadata("blogs");
@@ -49,19 +50,21 @@ export default function Home() {
             <Link
               id="frontpage-post-title"
               href={`/${post.slug}`}
-              className="text-lg text-[#1d1d1d] font-light hover:underline hover:text-[#555451] hover:decoration-[#555451] underline-offset-4 leading-relaxed"
+              // lightning and modern highlight on hover
+              className="text-lg text-[#1d1d1d] font-light hover:underline hover:text-[#555451] hover:decoration-[#555451] underline-offset-4 leading-relaxed hover:scale-105 transition-all duration-500"
             >
-              {post.title}
+              <span className="flex items-center gap-2">
+                {post.title}
+                <ArrowRight className="w-4 h-4" />
+              </span>
             </Link>
             <p
               id="frontpage-post-title"
               className="text-[#787670] mt-1 sm:mt-0 text-sm sm:text-base"
             >
-              {post.publish_date
-                .toLocaleString("default", { year: "2-digit" })
-                .replace(/^(\d{2})$/, "$1, ")}
-              {post.publish_date.toLocaleString("default", {
-                month: "short",
+              {post.publish_date.toLocaleString("vi-VN", {
+                year: "numeric",
+                month: "long",
                 day: "numeric",
               })}
             </p>

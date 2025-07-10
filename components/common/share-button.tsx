@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Share2, Facebook, Instagram, Link } from "lucide-react"; // @ts-ignore
+import { Share2, Facebook, Link } from "lucide-react"; // @ts-ignore
 import { toast } from "sonner";
 
 interface ShareButtonProps {
@@ -29,21 +29,6 @@ export default function ShareButton({ url, title }: ShareButtonProps) {
           "_blank",
           "width=600,height=400",
         );
-      },
-    },
-    {
-      name: "Instagram",
-      icon: Instagram,
-      action: () => {
-        navigator.clipboard.writeText(url).then(() => {
-          window.open(
-            "https://www.instagram.com/?url=" + encodeURIComponent(url),
-            "_blank",
-          );
-          toast.info(
-            "Liên kết đã được sao chép! Dán vào Instagram để chia sẻ 📷",
-          );
-        });
       },
     },
     {

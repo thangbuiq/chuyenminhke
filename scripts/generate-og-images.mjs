@@ -52,21 +52,47 @@ function getPostMetadata(basePath) {
   return posts;
 }
 
+async function waitForServerReady(url, timeout = 30000) {
+  const start = Date.now();
+  console.log(
+    `Checking and waiting for server at ${url} to be ready... (tips: bun dev)`,
+  );
+
+  while (Date.now() - start < timeout) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return true;
+    } catch (_) {}
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
+  throw new Error(`Timeout waiting for ${url}`);
+}
+
 async function generateOgImages() {
   try {
     const outputDir = path.join(process.cwd(), "public", "og-images");
     await fs.mkdir(outputDir, { recursive: true });
 
-    const posts = getPostMetadata("blogs");
     const baseUrl = "http://localhost:3000";
+    await waitForServerReady(baseUrl);
+
+    const posts = getPostMetadata("blogs");
 
     for (const post of posts) {
       const { slug, title, cover } = post;
+      const outputPath = path.join(outputDir, `${slug}.png`);
+
+      try {
+        await fs.access(outputPath);
+        console.log(`OG image already exists for ${slug}, skipping...`);
+        continue;
+      } catch (_) {
+        console.log(`Generating OG image for ${slug}...`);
+      }
+
       const cleanTitle = title.replace(/[^\p{L}\p{N}\s.,!?-]/gu, "");
       const coverUrl = cover ? `${baseUrl}${cover}` : `${baseUrl}/icon.png`;
       const ogImageUrl = `${baseUrl}/api/og?title=${encodeURIComponent(cleanTitle)}&cover=${encodeURIComponent(coverUrl)}&layout=left`;
-
-      console.log(`Generating OG image for slug: ${slug}`);
 
       const response = await fetch(ogImageUrl);
       if (!response.ok) {
@@ -78,7 +104,6 @@ async function generateOgImages() {
 
       const arrayBuffer = await response.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
-      const outputPath = path.join(outputDir, `${slug}.png`);
       await fs.writeFile(outputPath, buffer);
       console.log(`Saved OG image for ${slug} at ${outputPath}`);
     }

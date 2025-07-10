@@ -22,7 +22,10 @@ interface CommentSectionProps {
 
 export default function CommentSection({ slug }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
-  const [newComment, setNewComment] = useState({ author: "", content: "" });
+  const [newComment, setNewComment] = useState({
+    author: "Ẩn danh",
+    content: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -52,8 +55,8 @@ export default function CommentSection({ slug }: CommentSectionProps) {
       const comment = await res.json();
       setComments((prev) => [comment, ...prev]);
       setNewComment({ author: "", content: "" });
-      toast.success("Cảm ơn bạn đã chia sẻ cảm xúc! 🌱");
-    } catch {
+      toast.success("Cảm ơn bạn đã chia sẻ! 🌱");
+    } catch (error) {
       toast.error("Đã có lỗi xảy ra, vui lòng thử lại");
     } finally {
       setIsSubmitting(false);

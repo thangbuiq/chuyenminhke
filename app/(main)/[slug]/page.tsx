@@ -117,19 +117,16 @@ export default async function BlogPage({
           />
         </Link>
 
-        {/* Breadcrumb with heart */}
         <nav className="mt-4 ml-2 text-sm text-[#999792]">
           <Link href="/" className="hover:text-[#787670] transition-colors">
-            home
+            trang chủ
           </Link>
         </nav>
       </header>
 
-      {/* Main Article with enhanced emotional elements */}
       <article className="mt-10 relative">
         <h1 className="text-[#1d1d1d] text-xl mb-4">{post.data.title}</h1>
 
-        {/* Enhanced metadata with icons */}
         <div className="flex flex-wrap items-center gap-4 text-sm text-[#787670] mb-2">
           <div className="flex items-center gap-1">
             <CalendarDays className="w-4 h-4" />
@@ -145,7 +142,6 @@ export default async function BlogPage({
           <ReadingTime content={post.content} />
         </div>
 
-        {/* Enhanced cover image with overlay effects */}
         <div className="py-14 relative group">
           <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-500 rounded-lg" />
           <Image
@@ -161,7 +157,6 @@ export default async function BlogPage({
 
         <Markdown>{post.content}</Markdown>
 
-        {/* Tags with emotions */}
         {post.data.tags && (
           <div className="mt-12 mb-8">
             <p className="text-sm text-[#999792] mb-3">
