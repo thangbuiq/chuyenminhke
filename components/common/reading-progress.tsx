@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import { Progress } from "@/components/ui/progress";
 
 export default function ReadingProgress() {

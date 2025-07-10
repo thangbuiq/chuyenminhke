@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Heart } from "lucide-react";
 import clsx from "clsx";
+import { Heart } from "lucide-react";
+import { useEffect, useState } from "react";
+
+import { Button } from "@/components/ui/button";
 
 export default function LikeButton({ slug }: { slug: string }) {
   const [count, setCount] = useState(0);

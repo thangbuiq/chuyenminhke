@@ -1,7 +1,8 @@
 import fs from "fs";
 import matter from "gray-matter";
-import { dateToDateString, splitDateString } from "./helper";
 import { notFound } from "next/navigation";
+
+import { dateToDateString, splitDateString } from "./helper";
 
 export const getPostMetadata = (basePath: string) => {
   try {

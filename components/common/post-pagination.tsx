@@ -1,9 +1,10 @@
 // components/common/post-pagination.tsx
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+
 import {
   Pagination,
   PaginationContent,

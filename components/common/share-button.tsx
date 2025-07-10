@@ -1,6 +1,9 @@
 "use client";
 
+import { Facebook, Link, Share2 } from "lucide-react"; // @ts-ignore
 import { useState } from "react";
+import { toast } from "sonner";
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,15 +11,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Share2, Facebook, Link } from "lucide-react"; // @ts-ignore
-import { toast } from "sonner";
 
 interface ShareButtonProps {
   url: string;
-  title: string;
 }
 
-export default function ShareButton({ url, title }: ShareButtonProps) {
+export default function ShareButton({ url }: ShareButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const shareOptions = [

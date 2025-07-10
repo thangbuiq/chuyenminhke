@@ -1,8 +1,9 @@
-import { getPostMetadata } from "@/utils/blog";
 import Image from "next/image";
 import Link from "next/link";
+
 import Footer from "@/components/common/footer";
 import PostPagination from "@/components/common/post-pagination";
+import { getPostMetadata } from "@/utils/blog";
 
 export default function Home() {
   const postMetadata = getPostMetadata("blogs");

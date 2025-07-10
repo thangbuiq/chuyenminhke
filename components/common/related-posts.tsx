@@ -1,8 +1,9 @@
+import { Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface Post {
   slug: string;

@@ -1,19 +1,18 @@
-import { Suspense } from "react";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { CalendarDays } from "lucide-react";
 import Markdown from "markdown-to-jsx";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays } from "lucide-react";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
+import BackToTop from "@/components/common/back-to-top";
+import CommentSection from "@/components/common/comment-section";
+import Footer from "@/components/common/footer";
 import LikeButton from "@/components/common/like-button";
 import ReadingProgress from "@/components/common/reading-progress";
-import ShareButton from "@/components/common/share-button";
 import ReadingTime from "@/components/common/reading-time";
-import CommentSection from "@/components/common/comment-section";
-import BackToTop from "@/components/common/back-to-top";
-import Footer from "@/components/common/footer";
-
+import ShareButton from "@/components/common/share-button";
 import { getPostContent, getPostMetadata } from "@/utils/blog";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
@@ -134,7 +133,7 @@ const BlogActions = ({ slug, post }: { slug: string; post: Post }) => (
       </p>
       <div className="flex justify-center items-center gap-4">
         <LikeButton slug={slug} />
-        <ShareButton url={`${BASE_URL}/${slug}`} title={post.data.title} />
+        <ShareButton url={`${BASE_URL}/${slug}`} />
       </div>
     </div>
   </div>

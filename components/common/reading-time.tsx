@@ -14,7 +14,7 @@ export default function ReadingTime({
   const calculateReadingTime = (text: string): number => {
     // Remove markdown syntax and HTML tags
     const cleanText = text
-      .replace(/[#*`~\[\]()]/g, "")
+      .replace(/[#$*`~[\]()]/g, "")
       .replace(/<[^>]*>/g, "")
       .replace(/!\[.*?\]\(.*?\)/g, "")
       .replace(/\[.*?\]\(.*?\)/g, "");

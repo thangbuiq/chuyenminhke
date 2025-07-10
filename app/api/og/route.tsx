@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
@@ -157,8 +158,7 @@ export async function GET(request: NextRequest) {
                 alignItems: "center",
               }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={cover}
                 alt="Cover"
                 style={{
