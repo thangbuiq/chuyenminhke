@@ -80,7 +80,7 @@ export default function CommentSection({ slug }: CommentSectionProps) {
         <CardHeader className="text-center pb-4">
           <CardTitle className="flex items-center justify-center gap-2 text-lg font-light text-[#1d1d1d]">
             <MessageCircle size={20} />
-            cảm xúc của bạn
+            bình luận của bạn đọc
           </CardTitle>
           <p className="text-sm text-[#666] mt-2">
             hãy chia sẻ những gì bạn cảm nhận sau khi đọc câu chuyện này
@@ -134,7 +134,7 @@ export default function CommentSection({ slug }: CommentSectionProps) {
           {comments.length > 0 && (
             <div className="space-y-4 border-t border-amber-200/50 pt-6">
               <h3 className="text-sm font-medium text-[#666] mb-4">
-                {comments.length} cảm xúc đã được chia sẻ
+                {comments.length} bình luận
               </h3>
 
               {comments.map((comment) => (

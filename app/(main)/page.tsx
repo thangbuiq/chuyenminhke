@@ -6,7 +6,13 @@ import PostPagination from "@/components/common/post-pagination";
 import { getPostMetadata } from "@/utils/blog";
 
 export default function Home() {
-  const postMetadata = getPostMetadata("blogs");
+  let postMetadata: any;
+  try {
+    postMetadata = getPostMetadata("blogs");
+  } catch (error) {
+    console.error("Failed to load blog posts:", error);
+    postMetadata = [];
+  }
 
   return (
     <>
@@ -28,9 +34,9 @@ export default function Home() {
           className="text-[#787670] leading-relaxed mt-8 text-[0.715rem] sm:text-sm sm:leading-relaxed border-l-4 border-[#787670] pl-3 sm:pl-6"
           id="frontpage-description"
         >
-          mình kể lại những cái nhỏ của ngày hôm qua, <br />
+          mình kể lại những cái nhỏ của hôm qua, <br />
           chuyện con mèo đang ngáp, chuyện cà phê chưa kịp nguội, <br />
-          chuyện mình còn giữ trong tim, chuyện mình học làm người.
+          chuyện mình giữ trong tim, chuyện mình học làm người.
         </p>
       </header>
       <main className="mt-10 sm:mt-14 px-4 sm:px-0 flex flex-col gap-6">
@@ -39,7 +45,7 @@ export default function Home() {
             className="text-lg sm:text-xl text-[#1d1d1d] font-semibold"
             id="frontpage-title"
           >
-            <span className="mr-2">🌱</span>vậy nên mình viết...
+            <span className="mr-2 animate-bounce">🌱</span> nên mình viết...
           </h2>
         </div>
 
