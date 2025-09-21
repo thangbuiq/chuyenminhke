@@ -17,8 +17,10 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@prisma/generated/client": ["prisma/generated/client"]
     },
     "target": "ES2017"
   },

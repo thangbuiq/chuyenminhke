@@ -22,6 +22,9 @@ export async function POST(
   const { slug } = await context.params;
   const body = await req.json();
 
+  console.log("Author:", body.author);
+  console.log("Content:", body.content);
+
   const comment = await prisma.comment.create({
     data: {
       slug,
