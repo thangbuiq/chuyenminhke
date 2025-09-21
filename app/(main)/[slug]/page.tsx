@@ -128,7 +128,7 @@ const BlogActions = ({ slug, post }: { slug: string; post: Post }) => (
   <div className="mt-16 mb-4">
     <div className="border-t border-[#e5e5e5] w-full mb-8" />
     <div className="text-center mb-6">
-      <p className="text-[#666] mb-4">câu chuyện có chạm đến trái tim bạn?</p>
+      <p className="text-[#666] mb-4">bấm thích để ủng hộ mình</p>
       <div className="flex justify-center items-center gap-4">
         <LikeButton slug={slug} />
         <ShareButton url={`${BASE_URL}/${slug}`} />

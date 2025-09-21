@@ -36,7 +36,7 @@ export default function Home() {
         >
           mình kể lại những cái nhỏ của hôm qua, <br />
           chuyện con mèo đang ngáp, chuyện cà phê chưa kịp nguội, <br />
-          chuyện mình giữ trong tim, chuyện mình học làm người.
+          chuyện còn giữ trong tim, chuyện đang học làm người.
         </p>
       </header>
       <main className="mt-10 sm:mt-14 px-4 sm:px-0 flex flex-col gap-6">

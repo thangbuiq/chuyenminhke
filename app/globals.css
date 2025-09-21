@@ -33,6 +33,15 @@ article h1,
     blink-caret 1s steps(40, end) infinite;
 }
 
+article h2 {
+  font-size: 1.3rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #3d3d3d;
+  border-bottom: 2px solid #e2e2e2;
+  padding-bottom: 0.25rem;
+}
+
 article p {
   color: #555451;
   line-height: 1.75;

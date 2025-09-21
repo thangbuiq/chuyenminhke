@@ -15,7 +15,7 @@
     "vercel-build": "bunx prisma generate && bunx prisma migrate deploy && next build"
   },
   "dependencies": {
-    "@prisma/client": "^6.10.1",
+    "@prisma/client": "6.16.2",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-progress": "^1.1.7",
@@ -29,6 +29,7 @@
     "next": "^15.3.4",
     "node-fetch": "3",
     "prettier": "^3.6.2",
+    "prisma": "6.16.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "sharp": "^0.33.5",
