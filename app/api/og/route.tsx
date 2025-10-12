@@ -119,7 +119,7 @@ export async function GET(request: NextRequest) {
             {/* Main title */}
             <h1
               style={{
-                fontSize: displayTitle.length > 40 ? "36px" : "42px",
+                fontSize: "36px",
                 fontWeight: 600,
                 color: "#1c1917",
                 textAlign: "center",

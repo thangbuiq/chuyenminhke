@@ -49,7 +49,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <PostPagination posts={postMetadata} perPage={3} />
+        <PostPagination posts={postMetadata} perPage={4} />
         <Footer />
       </main>
     </>
