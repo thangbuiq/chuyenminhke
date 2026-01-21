@@ -6,13 +6,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-import BackToTop from "@/components/common/back-to-top";
 import CommentSection from "@/components/common/comment-section";
 import Footer from "@/components/common/footer";
 import LikeButton from "@/components/common/like-button";
 import ReadingProgress from "@/components/common/reading-progress";
 import ReadingTime from "@/components/common/reading-time";
 import ShareButton from "@/components/common/share-button";
+import AnimatedBlogHeader from "@/components/post/animated-blog-header";
+import AnimatedContent from "@/components/post/animated-content";
 import { getPostContent, getPostMetadata } from "@/utils/blog";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
@@ -58,29 +59,6 @@ const formatDate = (date: Date): string =>
     day: "numeric",
     year: "numeric",
   });
-
-const BlogHeader = () => (
-  <header className="pt-40 px-4 relative">
-    <div className="absolute inset-0 bg-gradient-to-b from-amber-50/30 to-transparent pointer-events-none" />
-    <Link
-      href="/"
-      className="inline-block transition-all duration-500 hover:scale-105 hover:drop-shadow-lg"
-    >
-      <Image
-        src="/icon.png"
-        alt={`${SITE_NAME} icon`}
-        width={70}
-        height={70}
-        priority
-      />
-    </Link>
-    <nav className="mt-4 ml-1 text-sm text-[#999792]">
-      <Link href="/" className="hover:text-[#787670] transition-colors">
-        trang chủ
-      </Link>
-    </nav>
-  </header>
-);
 
 const BlogMeta = ({ post }: { post: Post }) => (
   <div className="flex flex-wrap items-center gap-4 text-sm text-[#787670] mb-2">
@@ -233,29 +211,30 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <ReadingProgress />
       </div>
 
-      <BlogHeader />
+      <AnimatedBlogHeader />
 
-      <article className="mt-10 relative">
-        <h1 className="text-[#1d1d1d] text-xl mb-4">{post.data.title}</h1>
+      <AnimatedContent>
+        <article className="mt-10 relative">
+          <h1 className="text-[#1d1d1d] text-xl mb-4">{post.data.title}</h1>
 
-        <BlogMeta post={post} />
-        <BlogCover post={post} />
+          <BlogMeta post={post} />
+          <BlogCover post={post} />
 
-        <Markdown>{post.content}</Markdown>
+          <Markdown>{post.content}</Markdown>
 
-        {post.data.tags && <BlogTags tags={post.data.tags} />}
-      </article>
+          {post.data.tags && <BlogTags tags={post.data.tags} />}
+        </article>
 
-      <BlogActions slug={slug} post={post} />
+        <BlogActions slug={slug} post={post} />
 
-      <Suspense
-        fallback={<div className="h-32 animate-pulse bg-gray-100 rounded" />}
-      >
-        <CommentSection slug={slug} />
-      </Suspense>
+        <Suspense
+          fallback={<div className="h-32 animate-pulse bg-gray-100 rounded" />}
+        >
+          <CommentSection slug={slug} />
+        </Suspense>
 
-      <Footer />
-      <BackToTop />
+        <Footer />
+      </AnimatedContent>
     </>
   );
 }

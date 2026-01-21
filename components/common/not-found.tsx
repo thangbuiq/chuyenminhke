@@ -1,37 +1,59 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function NotFound() {
-  const router = useRouter();
-
   return (
-    <div className="min-h-screen bg-white">
-      <header className="pt-36 px-2 sm:px-0 max-w-2xl mx-auto">
-        <Link href={"/"}>
-          <Image
-            src="/icon.png"
-            id="notfound-icon"
-            alt="chuyeminhke icon"
-            width={140}
-            height={140}
-            className="hover:scale-105 hover:drop-shadow-lg transition-all duration-500 opacity-80"
-          />
-        </Link>
-        <h1 className="font-bold text-2xl sm:text-5xl text-[#1d1d1d] mt-14 mb-8 py-2 pr-4">
-          không tồn tại
-        </h1>
-      </header>
+    <div className="flex justify-center min-h-screen">
+      <div className="w-155 max-w-full px-4 pt-36">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Link href={"/"}>
+            <Image
+              src="/icon.png"
+              id="notfound-icon"
+              alt="chuyeminhke icon"
+              width={140}
+              height={140}
+              className="hover:scale-105 hover:drop-shadow-lg transition-all duration-500 opacity-80"
+            />
+          </Link>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="font-semibold tracking-wider text-2xl sm:text-5xl text-[#1d1d1d] mt-14 mb-8 py-2 pr-4"
+          >
+            không tìm thấy
+          </motion.h1>
 
-      <main className="mt-10 sm:mt-14 px-4 sm:px-0 max-w-2xl mx-auto flex flex-col gap-8">
-        <div className="flex items-center mb-4">
-          <h2 className="text-lg sm:text-xl text-[#1d1d1d]" id="notfound-title">
-            lạc đường rùi, nhấn dấu ba chấm và về nhà nhé...
-          </h2>
-        </div>
-      </main>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col gap-6"
+          >
+            <p className="text-[#787670] leading-relaxed border-l-4 border-[#787670] pl-3 sm:pl-6 text-sm">
+              lạc đường rùi, <br />
+              nhưng đừng lo, đường về nhà vẫn ở đó.
+            </p>
+
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-[#1d1d1d] hover:text-[#555451] transition-colors mt-4 font-medium tracking-wide text-sm group"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              về trang chủ
+            </Link>
+          </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }

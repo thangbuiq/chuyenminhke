@@ -36,7 +36,7 @@ export const getPostMetadata = (basePath: string) => {
           const cover_alt = matterResult.data.cover_alt || null;
 
           const tags = matterResult.data.tags || [];
-          
+
           // Calculate reading time
           let reading_time = "1 min read";
           if (matterResult.content) {

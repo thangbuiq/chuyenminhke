@@ -32,7 +32,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" className="scroll-smooth" suppressHydrationWarning>
-      <body className={playfair.className} suppressHydrationWarning>{children}</body>
+      <body className={playfair.className} suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

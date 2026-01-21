@@ -9,7 +9,8 @@ body,
 }
 
 ::selection {
-  background-color: #3d3d3d; /* Tailwind sky-500 */
+  background-color: #3d3d3d;
+  /* Tailwind sky-500 */
   color: white;
 }
 
@@ -22,6 +23,7 @@ body,
 article h1 {
   letter-spacing: 0.15em;
 }
+
 article h1,
 #frontpage-title {
   overflow: hidden;
@@ -71,6 +73,7 @@ blockquote p {
   from {
     width: 0;
   }
+
   to {
     width: 100%;
   }
@@ -81,6 +84,7 @@ blockquote p {
   to {
     border-color: transparent;
   }
+
   50% {
     border-color: rgb(120, 120, 120);
   }
@@ -145,6 +149,7 @@ blockquote p {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -177,7 +182,14 @@ blockquote p {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .dark body {
+    background-image: radial-gradient(#262626 1px, transparent 1px);
   }
 }
