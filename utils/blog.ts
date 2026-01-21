@@ -32,6 +32,18 @@ export const getPostMetadata = (basePath: string) => {
           // Validate required fields and provide defaults
           const title = matterResult.data.title || filename.replace(".md", "");
           const isPublished = matterResult.data.is_published !== false; // default to true if not specified
+          const cover = matterResult.data.cover || null;
+          const cover_alt = matterResult.data.cover_alt || null;
+
+          const tags = matterResult.data.tags || [];
+          
+          // Calculate reading time
+          let reading_time = "1 min read";
+          if (matterResult.content) {
+            const words = matterResult.content.trim().split(/\s+/).length;
+            const minutes = Math.ceil(words / 200);
+            reading_time = `${minutes} min read`;
+          }
 
           let publishDate;
           if (matterResult.data.publish_date) {
@@ -52,6 +64,10 @@ export const getPostMetadata = (basePath: string) => {
             is_published: isPublished,
             publish_date: publishDate,
             slug: `${toSlug(title)}-${dateToDateString(publishDate)}`,
+            cover,
+            cover_alt,
+            tags,
+            reading_time,
           };
         } catch (fileError) {
           console.error(`Error reading file ${filename}:`, fileError);
@@ -66,6 +82,10 @@ export const getPostMetadata = (basePath: string) => {
           is_published: boolean;
           publish_date: Date;
           slug: string;
+          cover: string | null;
+          cover_alt: string | null;
+          tags: string[];
+          reading_time: string;
         } => !!post,
       ) // Remove null entries from failed file reads
       .sort((a, b) => {

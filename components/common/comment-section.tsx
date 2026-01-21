@@ -159,7 +159,7 @@ export default function CommentSection({ slug }: CommentSectionProps) {
                         </span>
                       </div>
 
-                      <p className="text-sm text-[#666] leading-relaxed mb-3">
+                      <p className="text-sm text-[#666] leading-relaxed mb-3 whitespace-pre-wrap">
                         {comment.content}
                       </p>
                     </div>

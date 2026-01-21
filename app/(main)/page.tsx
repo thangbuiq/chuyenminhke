@@ -2,16 +2,53 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Footer from "@/components/common/footer";
-import PostPagination from "@/components/common/post-pagination";
+import PostList from "@/components/common/post-list";
 import { getPostMetadata } from "@/utils/blog";
 
-export default function Home() {
-  let postMetadata: any;
+import { prisma } from "@/lib/prisma";
+
+export default async function Home() {
+  let postMetadata: any[] = [];
   try {
     postMetadata = getPostMetadata("blogs");
   } catch (error) {
     console.error("Failed to load blog posts:", error);
     postMetadata = [];
+  }
+
+  // Fetch stats from database
+  let postsWithStats = postMetadata;
+  try {
+    const slugs = postMetadata.map((p) => p.slug);
+
+    const [likes, comments] = await Promise.all([
+      prisma.like.findMany({
+        where: { slug: { in: slugs } },
+      }),
+      prisma.comment.groupBy({
+        by: ["slug"],
+        _count: {
+          id: true,
+        },
+        where: {
+          slug: { in: slugs },
+        },
+      }),
+    ]);
+
+    postsWithStats = postMetadata.map((post) => {
+      const like = likes.find((l) => l.slug === post.slug);
+      const comment = comments.find((c) => c.slug === post.slug);
+
+      return {
+        ...post,
+        like_count: like?.count || 0,
+        comment_count: comment?._count.id || 0,
+      };
+    });
+  } catch (error) {
+    console.warn("Failed to fetch post stats:", error);
+    // Fallback to basic metadata without stats
   }
 
   return (
@@ -27,7 +64,7 @@ export default function Home() {
             className="hover:scale-105 hover:drop-shadow-lg transition-all duration-500"
           />
         </Link>
-        <h1 className="font-bold text-2xl sm:text-5xl text-[#1d1d1d] mt-14 mb-8 py-2 pr-4">
+        <h1 className="font-semibold tracking-wider text-2xl sm:text-5xl text-[#1d1d1d] mt-14 mb-8 py-2 pr-4">
           chuyện mình kể
         </h1>
         <p
@@ -49,7 +86,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <PostPagination posts={postMetadata} perPage={4} />
+        <PostList posts={postsWithStats} />
         <Footer />
       </main>
     </>
