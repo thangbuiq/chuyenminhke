@@ -1,6 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-
 import Footer from "@/components/common/footer";
 import PostList from "@/components/common/post-list";
 import Hero from "@/components/home/hero";
@@ -16,7 +13,6 @@ export default async function Home() {
     postMetadata = [];
   }
 
-  // Fetch stats from database
   let postsWithStats = postMetadata;
   try {
     const slugs = postMetadata.map((p) => p.slug);
@@ -48,7 +44,6 @@ export default async function Home() {
     });
   } catch (error) {
     console.warn("Failed to fetch post stats:", error);
-    // Fallback to basic metadata without stats
   }
 
   return (
@@ -60,7 +55,7 @@ export default async function Home() {
             className="text-lg sm:text-xl text-[#1d1d1d] font-semibold"
             id="frontpage-title"
           >
-            <span className="mr-2 animate-bounce">🌱</span> nên mình viết...
+            nên mình viết...
           </h2>
         </div>
 
