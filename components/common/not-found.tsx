@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div className="flex justify-center min-h-screen">
-      <div className="w-155 max-w-full px-4 pt-36">
+      <div className="w-full max-w-[52rem] px-5 sm:px-8 pt-36">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

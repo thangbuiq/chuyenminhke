@@ -7,7 +7,7 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex justify-center">
-      <div className="w-155 max-w-full px-4">{children}</div>
+      <div className="w-full max-w-[52rem] px-5 sm:px-8">{children}</div>
       <ScrollToTop />
     </div>
   );

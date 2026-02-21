@@ -25,7 +25,7 @@ export default function GlobalError({
     <html lang="vi">
       <body className={playfair.className}>
         <div className="flex justify-center min-h-screen">
-          <div className="w-155 max-w-full px-4 pt-36">
+          <div className="w-full max-w-[52rem] px-5 sm:px-8 pt-36">
             <div>
               <Link href={"/"}>
                 <Image

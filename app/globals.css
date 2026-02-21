@@ -47,11 +47,19 @@ article h2 {
 article p {
   color: #555451;
   line-height: 1.75;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 article p:first-child {
   margin-top: 0;
+}
+
+article hr {
+  border: 0;
+  height: 1px;
+  background-color: #e2e2e2;
+  margin-top: 2.75rem;
+  margin-bottom: 2.75rem;
 }
 
 blockquote {
@@ -103,6 +111,11 @@ blockquote p {
     font-size: 1.1rem;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
+  }
+
+  article hr {
+    margin-top: 2.2rem;
+    margin-bottom: 2.2rem;
   }
 
   #frontpage-post-title {
