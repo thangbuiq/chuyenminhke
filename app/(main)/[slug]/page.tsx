@@ -9,12 +9,17 @@ import { Suspense } from "react";
 import CommentSection from "@/components/common/comment-section";
 import Footer from "@/components/common/footer";
 import LikeButton from "@/components/common/like-button";
+import PostNavigation from "@/components/common/post-navigation";
 import ReadingProgress from "@/components/common/reading-progress";
 import ReadingTime from "@/components/common/reading-time";
 import ShareButton from "@/components/common/share-button";
 import AnimatedBlogHeader from "@/components/post/animated-blog-header";
 import AnimatedContent from "@/components/post/animated-content";
-import { getPostContent, getPostMetadata } from "@/utils/blog";
+import {
+  getAdjacentPosts,
+  getPostContent,
+  getPostMetadata,
+} from "@/utils/blog";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 const SITE_NAME = "chuyện mình kể";
@@ -226,6 +231,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </article>
 
         <BlogActions slug={slug} post={post} />
+
+        <PostNavigation {...getAdjacentPosts(slug)} />
 
         <Suspense
           fallback={<div className="h-32 animate-pulse bg-gray-100 rounded" />}

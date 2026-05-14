@@ -149,6 +149,25 @@ export const getPostContent = (slug: string) => {
   }
 };
 
+export const getAdjacentPosts = (slug: string) => {
+  try {
+    const posts = getPostMetadata("blogs").filter((post) => post.is_published);
+
+    const currentIndex = posts.findIndex((post) => post.slug === slug);
+    if (currentIndex === -1) return { prev: null, next: null };
+
+    // posts sorted newest-first (index 0 = newest)
+    // "prev" = older post (appears later in list), "next" = newer post (appears earlier)
+    return {
+      prev: currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null,
+      next: currentIndex > 0 ? posts[currentIndex - 1] : null,
+    };
+  } catch (error) {
+    console.error("Error in getAdjacentPosts:", error);
+    return { prev: null, next: null };
+  }
+};
+
 // Alternative approach using glob pattern matching (install glob package)
 // npm install glob @types/glob
 /*
